@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Section, Container } from "@/components/craft";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Github,
@@ -308,15 +308,9 @@ const Feature = ({ props }: { props: PropsWeather }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link href={"/projects"}>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-2 bg-transparent"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    View Projects
-                  </Button>
+                <Link href={"/projects"} className={buttonVariants({ variant: "outline", size: "lg", className: "gap-2 bg-transparent" })}>
+                  <ExternalLink className="h-4 w-4" />
+                  View Projects
                 </Link>
               </motion.div>
             </motion.div>
@@ -348,11 +342,13 @@ const Feature = ({ props }: { props: PropsWeather }) => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button variant="ghost" size="icon" asChild>
-                    <Link href={href} aria-label={label}>
-                      <Icon className="h-5 w-5" />
-                    </Link>
-                  </Button>
+                  <Link
+                    href={href}
+                    aria-label={label}
+                    className={buttonVariants({ variant: "ghost", size: "icon" })}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

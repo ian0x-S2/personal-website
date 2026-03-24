@@ -17,7 +17,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 const projects = [
   {
@@ -154,31 +154,24 @@ export default function ProjectsPage() {
 
                       {/* Action Buttons */}
                       <div className="flex gap-3">
-                        <Button asChild className="flex-1 group">
-                          <Link
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Github className="h-4 w-4 mr-2" />
-                            View Code
-                            <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          asChild
-                          className="hover:bg-muted bg-transparent"
+                        <Link
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={buttonVariants({ className: "flex-1 group" })}
                         >
-                          <Link
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                          </Link>
-                        </Button>
+                          <Github className="h-4 w-4 mr-2" />
+                          View Code
+                          <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        <Link
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={buttonVariants({ variant: "outline", size: "icon", className: "hover:bg-muted bg-transparent" })}
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>
@@ -203,12 +196,10 @@ export default function ProjectsPage() {
               <p className="text-muted-foreground mb-6 max-w-md mx-auto">
                 I'm always open to discussing new projects and opportunities.
               </p>
-              <Button size="lg" asChild className="group">
-                <Link href="/contact">
+              <Link href="/contact" className={buttonVariants({ size: "lg", className: "group" })}>
                   Get in Touch
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
             </CardContent>
           </Card>
         </motion.div>
