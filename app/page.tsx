@@ -12,7 +12,6 @@ export default async function Home() {
         "x-rapidapi-key": `${key}`,
         "x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
       },
-      cache: "no-store",
       next: { revalidate: 86400 }, // Cache of 24 hours
     }
   );

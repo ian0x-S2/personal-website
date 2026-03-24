@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getAllPosts } from "./utils/posts-utils";
-import PageTransition from "@/components/animate";
+import { PageTransitionWrapper } from "@/components/page-transition-wrapper";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export const revalidate = 3600;
@@ -14,7 +14,7 @@ export default async function Page() {
   const allPosts = await getAllPosts();
 
   return (
-    <PageTransition>
+    <PageTransitionWrapper>
       <Section className="overflow-hidden flex-grow min-h-screen">
         <Container className="not-prose max-w-screen-2xl">
           <h1 className="text-4xl font-bold mb-2">Latest Posts</h1>
@@ -90,6 +90,6 @@ export default async function Page() {
           </div>
         </Container>
       </Section>
-    </PageTransition>
+    </PageTransitionWrapper>
   );
 }

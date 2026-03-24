@@ -6,7 +6,7 @@ import Toc from "@/components/toc";
 import ProgressBar from "@/components/progress-bar";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
-import PageTransition from "@/components/animate";
+import { PageTransitionWrapper } from "@/components/page-transition-wrapper";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -79,7 +79,7 @@ const PagePost = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const post = await getPostBySlug(slug);
 
   return (
-    <PageTransition>
+    <PageTransitionWrapper>
       {/* Progress Bar - Fixed at top */}
       <ProgressBar toc={post.toc} />
 
@@ -183,7 +183,7 @@ const PagePost = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </Article>
         </Container>
       </Section>
-    </PageTransition>
+    </PageTransitionWrapper>
   );
 };
 
