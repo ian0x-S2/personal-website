@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact — Ian Mello",
-  description: "Get in touch with Ian Mello.",
+  title: "Contact — Ian",
+  description: "Get in touch with Ian.",
 };
 
 export default function ContactPage() {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { DitherImage } from "@/components/dither-image";
 
 export const metadata: Metadata = {
-  title: "About — Ian Mello",
+  title: "About — Ian",
   description: "Software developer based in São Paulo, Brazil.",
 };
 
@@ -22,7 +22,7 @@ export default function AboutPage() {
         <span className="text-xs text-muted-foreground uppercase tracking-widest block mb-4">
           About
         </span>
-        <h1 className="font-serif text-4xl leading-tight">Ian Mello</h1>
+        <h1 className="font-serif text-4xl leading-tight">Ian</h1>
       </section>
 
       <div className="border-t border-border mb-12" />
@@ -31,7 +31,7 @@ export default function AboutPage() {
       <div className="mb-12">
         <DitherImage
           src="/images/foi2.png"
-          alt="Ian Mello"
+          alt="Ian"
           width={480}
           height={320}
           className="border border-border"

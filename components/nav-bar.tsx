@@ -43,7 +43,7 @@ export default function NavBar() {
           href="/"
           className="font-serif text-base hover:text-accent transition-colors flex-shrink-0"
         >
-          Ian Mello
+          Ian
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-6">

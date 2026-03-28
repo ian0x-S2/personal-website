@@ -22,11 +22,11 @@ const ebGaramond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Ian Mello — Software Developer",
+  title: "Ian — Software Developer",
   description:
     "Software developer focused on creating functional and intuitive websites and applications. Love simplicity and nature.",
   openGraph: {
-    title: "Ian Mello — Software Developer",
+    title: "Ian — Software Developer",
     description:
       "Software developer focused on creating functional and intuitive websites and applications.",
     type: "website",

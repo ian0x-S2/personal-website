@@ -22,7 +22,7 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug);
   if (!post) notFound();
   return {
-    title: `${post.frontmatter.title} — Ian Mello`,
+    title: `${post.frontmatter.title} — Ian`,
     description: post.frontmatter.description,
   };
 }
