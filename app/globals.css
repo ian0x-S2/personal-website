@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Fonts */
+  --font-serif: var(--font-serif), Georgia, 'Times New Roman', serif;
+  --font-mono: var(--font-mono), 'Courier New', monospace;
+
+  /* Semantic colors */
+  --color-ink: #1C1C1A;
+  --color-paper: #F4F1EA;
+  --color-rule: #D4D0C5;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Animations */
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg); }
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -94,20 +149,17 @@
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@utility text-balance {
+  text-wrap: balance;
+}
 
-  /* Ordered-dither dot grid — decorative backgrounds */
-  .dither-dots {
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      hsl(var(--foreground) / 0.12) 0.6px,
-      transparent 0
-    );
-    background-size: 4px 4px;
-  }
+@utility dither-dots {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    hsl(var(--foreground) / 0.12) 0.6px,
+    transparent 0
+  );
+  background-size: 4px 4px;
 }
 
 /* ── Code syntax highlight overrides ── */
@@ -134,4 +186,3 @@
 ::-webkit-scrollbar        { width: 3px; height: 3px; }
 ::-webkit-scrollbar-track  { background: hsl(var(--background)); }
 ::-webkit-scrollbar-thumb  { background: hsl(var(--border)); }
-
