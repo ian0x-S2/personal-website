@@ -1,15 +1,14 @@
-import NavBar from "@/components/nav-bar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Blog",
+  title: "Writing — Ian Mello",
+  description: "Notes, articles, and thinking out loud.",
 };
 
-export default async function DashboardLayout({
-  children, // will be a page or nested layout
+export default async function BlogLayout({
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  return <section className=" ">{children}</section>;
+  return <section>{children}</section>;
 }

@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import {
   Github,
   Linkedin,
-  Mail,
   ArrowUpRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -78,21 +77,21 @@ const Feature = ({ props }: { props: PropsWeather }) => {
               </motion.div>
 
               <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center">
-                <Link href="/projects" className={buttonVariants({ size: "lg", className: "h-14 px-10 rounded-full font-bold uppercase text-[10px] tracking-[0.2em] group" })}>
+                <Link href="/projects" className={buttonVariants({ size: "lg", className: "h-14 px-10 rounded-lg shadow-sm font-bold uppercase text-[10px] tracking-[0.2em] group" })}>
                   View Selected Works
                   <ArrowUpRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
                 
                 <div className="flex items-center gap-2">
                    {[
-                    { icon: Github, href: "https://github.com/Ianmello10" },
+                    { icon: Github, href: "https://github.com/ian0x-S2" },
                     { icon: Linkedin, href: "https://www.linkedin.com/in/lucas-i-67041b272/" },
-                    { icon: Mail, href: "mailto:your-email@example.com" }
+
                    ].map((social, i) => (
                       <Link 
                         key={i}
                         href={social.href} 
-                        className={buttonVariants({ variant: "ghost", size: "icon", className: "h-12 w-12 rounded-full border border-transparent hover:border-muted/20 hover:bg-muted/10" })}
+                        className={buttonVariants({ variant: "ghost", size: "icon", className: "h-12 w-12 rounded-lg border border-transparent hover:border-border/30 hover:bg-muted/30" })}
                       >
                         <social.icon className="h-5 w-5" />
                       </Link>

@@ -13,8 +13,15 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-
+			fontFamily: {
+				serif: ['var(--font-serif)', 'Georgia', "'Times New Roman'", 'serif'],
+				mono:  ['var(--font-mono)',  "'Courier New'", 'monospace'],
+			},
 			colors: {
+				/* Semantic palette — available as e.g. text-ink, border-rule */
+				ink:   '#1C1C1A',
+				paper: '#F4F1EA',
+				rule:  '#D4D0C5',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

@@ -90,10 +90,10 @@ const HeroDescription = () => {
 						>
 							{featureText.map(({ icon }, index) => (
 								<div
-									className="flex w-full md:w-full h-36 flex-col  border-[1px] p-4 
-									shadow-md hover:shadow-lg dark:hover:shadow-[#202020] 
-									ease-in-out duration-300 bg-[#ffffff] dark:bg-[#161616] 
-									rounded-md items-center justify-center"
+									className="flex w-full md:w-full h-36 flex-col border border-border/40 p-4 
+									shadow-sm hover:shadow-md dark:shadow-none dark:hover:shadow-sm 
+									ease-in-out duration-300 bg-card text-card-foreground 
+									rounded-xl items-center justify-center backdrop-blur-sm"
 									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 									key={index}
 								>

@@ -1,151 +1,93 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import {
-  Github,
-  Server,
-  ImageIcon,
-  ArrowUpRight,
-} from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 
 const projects = [
   {
-    id: 1,
     title: "Enterprise Fastify Engine",
+    year: "2024",
+    tags: ["Node.js", "Fastify", "Clean Architecture"],
     description:
-      "A robust RESTful system engineered with Node.js and Fastify. Leveraging Clean Architecture and SOLID principles to deliver a decoupled, testable, and highly maintainable core.",
-    icon: Server,
-    githubUrl: "https://github.com/Ianmello10/fastify-rest-api",
-    tags: ["Node.js", "Fastify", "Infrastructure"],
+      "A robust RESTful system engineered with Node.js and Fastify. Built with Clean Architecture and SOLID principles to deliver a decoupled, testable, and highly maintainable core.",
+    href: "https://github.com/ian0x-S2",
   },
   {
-    id: 2,
     title: "AI Computing Suite",
-    description:
-      "A browser-integrated processing engine for real-time image neural-manipulation. Focused on offloading heavy computation to the client to achieve sub-millisecond latency.",
-    icon: ImageIcon,
-    githubUrl: "https://github.com/Ianmello10/ai-browser-image-tools",
+    year: "2024",
     tags: ["AI", "TensorFlow.js", "GPU Computing"],
+    description:
+      "A browser-integrated processing engine for real-time image neural-manipulation. Offloads heavy computation to the client to achieve sub-millisecond latency.",
+    href: "https://github.com/ian0x-S2",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 md:px-10 py-24 max-w-screen-xl">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-24 space-y-8"
-        >
-          <div className="flex items-center gap-4 text-muted-foreground/60">
-             <span className="h-px w-10 bg-muted-foreground/20" />
-             <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Portfolio</span>
+    <main className="max-w-2xl mx-auto px-6 py-16">
+      {/* ── Header ── */}
+      <section className="mb-12">
+        <span className="text-xs text-muted-foreground uppercase tracking-widest block mb-4">
+          Work
+        </span>
+        <h1 className="font-serif text-4xl leading-tight mb-3">
+          Selected Projects
+        </h1>
+        <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
+          Systems and architectures focused on technical clarity and scalable
+          impact.
+        </p>
+      </section>
+
+      <div className="border-t border-border mb-0" />
+
+      {/* ── Project list ── */}
+      {projects.map((project) => (
+        <article key={project.title} className="py-10 border-b border-border">
+          <div className="flex justify-between items-start mb-4">
+            <h2 className="font-serif text-2xl leading-tight">
+              {project.title}
+            </h2>
+            <span className="text-xs text-muted-foreground ml-6 shrink-0 mt-1">
+              {project.year}
+            </span>
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground leading-[0.85]">
-            Selected <br /> <span className="text-muted-foreground/20 italic font-serif tracking-normal">Works.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground/80 max-w-2xl font-medium leading-snug tracking-tight">
-            A curation of systems and architectures focused on technical excellence and scalable impact.
-          </p>
-        </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-24 md:gap-y-32"
-        >
-          {projects.map((project) => {
-            const IconComponent = project.icon;
-            return (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className="group relative"
+          <div className="flex gap-4 mb-4">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs text-muted-foreground uppercase tracking-wider"
               >
-                <Link href={project.githubUrl} target="_blank" className="block space-y-6">
-                  <div className="relative aspect-[16/10] bg-muted/30 rounded-lg overflow-hidden border border-muted/20 transition-all duration-500 group-hover:border-primary/20 group-hover:bg-muted/50">
-                     <div className="absolute inset-0 flex items-center justify-center">
-                        <IconComponent className="h-16 w-16 text-muted-foreground/20 group-hover:scale-110 group-hover:text-primary/20 transition-all duration-700" />
-                     </div>
-                     <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        <div className="h-10 w-10 rounded-full bg-background border border-muted/20 flex items-center justify-center">
-                           <ArrowUpRight className="h-4 w-4" />
-                        </div>
-                     </div>
-                  </div>
+                {tag}
+              </span>
+            ))}
+          </div>
 
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                       {project.tags.map((tag) => (
-                          <span key={tag} className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/40">{tag}</span>
-                       ))}
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary/80 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground/70 leading-relaxed font-medium">
-                      {project.description}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-6">
+            {project.description}
+          </p>
 
-        {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="mt-48 pt-24 border-t border-muted/20 text-center space-y-8"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">
-            Let&apos;s build something <br /> <span className="text-muted-foreground/30">extraordinary.</span>
-          </h2>
-          <Link href="/contact" className={buttonVariants({ size: "lg", className: "h-14 px-10 rounded-full font-bold uppercase text-[10px] tracking-[0.2em]" })}>
-             Start a Conversation
+          <Link
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs hover:text-accent transition-colors underline underline-offset-4"
+          >
+            View on GitHub →
           </Link>
-        </motion.div>
+        </article>
+      ))}
+
+      {/* ── CTA ── */}
+      <div className="mt-14 pt-2">
+        <p className="text-sm text-muted-foreground">
+          Have a project in mind?{" "}
+          <Link
+            href="/contact"
+            className="underline underline-offset-4 hover:text-accent transition-colors"
+          >
+            Get in touch.
+          </Link>
+        </p>
       </div>
-    </div>
+    </main>
   );
 }

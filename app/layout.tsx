@@ -1,31 +1,34 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { EB_Garamond } from "next/font/google";
 import "./globals.css";
 import { Layout } from "@/components/craft";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import NavBar from "@/components/nav-bar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   weight: "100 900",
+});
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ian - Software developer",
+  title: "Ian Mello — Software Developer",
   description:
-    "Software developer focused on creating functional and intuitive websites and applications, taking care of the entire process, from the visual to the internal functioning. Love simplicity and nature.",
-
+    "Software developer focused on creating functional and intuitive websites and applications. Love simplicity and nature.",
   openGraph: {
-    title: "Ian - Software developer",
+    title: "Ian Mello — Software Developer",
     description:
-      "Software developer focused on creating functional and intuitive websites and applications, taking care of the entire process, from the visual to the internal functioning. Love simplicity and nature.",
+      "Software developer focused on creating functional and intuitive websites and applications.",
     type: "website",
   },
 };
@@ -37,9 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <Layout>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistMono.variable} ${ebGaramond.variable} flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -47,7 +48,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavBar />
-          {children}
+          <div className="flex-1">{children}</div>
           <Footer />
         </ThemeProvider>
       </body>

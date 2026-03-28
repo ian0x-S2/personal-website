@@ -17,7 +17,7 @@ export function ModeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full">
+      <Button variant="ghost" size="icon" className="h-9 w-9 rounded-md">
         <div className="h-4 w-4" />
       </Button>
     );
@@ -35,7 +35,7 @@ export function ModeToggle() {
         variant="ghost"
         size="icon"
         onClick={toggleTheme}
-        className="h-9 w-9 rounded-full hover:bg-muted/50 transition-colors duration-200 relative overflow-hidden"
+        className="h-9 w-9 rounded-md hover:bg-muted/50 transition-colors duration-200 relative overflow-hidden"
       >
         <motion.div
           className="relative"
