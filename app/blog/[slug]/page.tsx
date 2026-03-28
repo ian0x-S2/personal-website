@@ -83,98 +83,95 @@ const PagePost = async ({ params }: { params: Promise<{ slug: string }> }) => {
       {/* Progress Bar - Fixed at top */}
       <ProgressBar toc={post.toc} />
 
-      <Section className="overflow-visible flex-grow py-4 md:py-8">
-        <Container className="max-w-6xl mx-auto px-4">
+      <Section className="overflow-visible flex-grow py-20">
+        <Container className="max-w-screen-xl mx-auto px-6 md:px-10">
           <Article className="prose dark:prose-invert w-full max-w-none prose-lg">
             <div className="flex flex-col">
               {/* Back Button */}
-              <Link href="/blog" className="mb-6 md:mb-8">
+              <Link href="/blog" className="mb-12 inline-flex">
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="gap-2 px-2 w-auto text-muted-foreground hover:text-foreground"
+                  className="gap-2 px-0 w-auto text-muted-foreground/60 hover:text-foreground hover:bg-transparent text-[10px] font-bold uppercase tracking-[0.2em]"
                 >
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to Blog
+                  <ArrowLeft className="w-3 h-3" />
+                  Index
                 </Button>
               </Link>
 
               {/* Article Header */}
-              <header className="mb-6 md:mb-8 not-prose">
+              <header className="mb-16 not-prose space-y-8">
+                {/* Meta Information */}
+                <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/40">
+                  <div className="flex items-center gap-2">
+                    <span>{formatDate(post.frontmatter.publishDate)}</span>
+                  </div>
+                  <span className="h-1 w-1 rounded-full bg-muted-foreground/20" />
+                  <div className="flex items-center gap-2">
+                    <span>{calculateReadTime(post.toc)}</span>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-foreground">
+                  {post.frontmatter.title}
+                </h1>
+
+                {/* Description */}
+                {post.frontmatter.description && (
+                  <p className="text-xl md:text-2xl text-muted-foreground/60 leading-relaxed font-medium max-w-3xl">
+                    {post.frontmatter.description}
+                  </p>
+                )}
+
                 {/* Tags */}
                 {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-3 pt-4">
                     {post.frontmatter.tags.map((tag: string, index: number) => (
                       <Badge
                         key={index}
                         variant="secondary"
-                        className="text-xs"
+                        className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-muted/50 text-muted-foreground/80"
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
                 )}
-
-                {/* Title */}
-                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight mb-4">
-                  {post.frontmatter.title}
-                </h1>
-
-                {/* Description */}
-                {post.frontmatter.description && (
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-                    {post.frontmatter.description}
-                  </p>
-                )}
-
-                {/* Meta Information */}
-                <div className="flex flex-wrap items-center gap-3 md:gap-4 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>{formatDate(post.frontmatter.publishDate)}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{calculateReadTime(post.toc)}</span>
-                  </div>
-                  {post.toc && post.toc.length > 0 && (
-                    <div className="flex items-center gap-2">
-                      <Tag className="w-4 h-4" />
-                      <span>{post.toc.length} sections</span>
-                    </div>
-                  )}
-                </div>
-
-                <Separator className="mb-6 md:mb-8" />
               </header>
 
-              {/* Inline TOC */}
-              <div className="mb-4 md:mb-12 not-prose">
-                <Toc toc={post.toc} />
-              </div>
+              {/* Layout with Sidebar for TOC */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                {/* Inline TOC - Mobile only or Sidebar Desktop */}
+                <div className="lg:col-span-3 lg:sticky lg:top-32 order-2 lg:order-1 space-y-8">
+                  <div className="not-prose">
+                    <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/40 mb-6">Contents</h4>
+                    <Toc toc={post.toc} />
+                  </div>
+                </div>
 
-              {/* Article Content */}
-              <div className="prose-headings:scroll-mt-24 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-pre:bg-muted prose-pre:border prose-blockquote:border-l-primary prose-blockquote:border-l-4 prose-blockquote:bg-muted/30 prose-blockquote:py-1 prose-img:rounded-lg prose-img:shadow-md">
-                {post.content}
+                {/* Article Content */}
+                <div className="lg:col-span-9 order-1 lg:order-2 prose-headings:tracking-tight prose-headings:font-bold prose-headings:scroll-mt-32 prose-p:leading-relaxed prose-p:text-muted-foreground/90 prose-a:text-foreground prose-a:underline-offset-4 hover:prose-a:text-primary transition-colors prose-pre:rounded-md prose-pre:border-muted/20 prose-blockquote:border-l-foreground prose-blockquote:font-medium">
+                  {post.content}
+                </div>
               </div>
 
               {/* Article Footer */}
-              <footer className="mt-8 md:mt-12 pt-6 md:pt-8 border-t not-prose">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                  <div className="text-sm text-muted-foreground">
+              <footer className="mt-24 pt-12 border-t border-border/10 not-prose">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
                     <p>
-                      Published on {formatDate(post.frontmatter.publishDate)}
+                      Originally published — {formatDate(post.frontmatter.publishDate)}
                     </p>
                   </div>
                   <Link href="/blog">
                     <Button
                       variant="outline"
-                      size="sm"
-                      className="gap-2 bg-transparent"
+                      size="lg"
+                      className="gap-2 bg-transparent rounded-full px-8 text-[10px] font-bold uppercase tracking-[0.2em]"
                     >
-                      <ArrowLeft className="w-4 h-4" />
-                      More Posts
+                      <ArrowLeft className="w-3 h-3" />
+                      Back to Index
                     </Button>
                   </Link>
                 </div>

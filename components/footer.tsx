@@ -5,52 +5,50 @@ import { Github } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="not-prose   bg-gradient-to-b from-background to-muted/20">
-      <Section className="py-10 md:py-10">
-        <Container className="max-w-screen-2xl">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+    <footer className="not-prose border-t border-border/10 bg-background">
+      <Section className="py-20 md:py-24">
+        <Container className="max-w-screen-xl px-6 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
             {/* Brand Section */}
-            <div className="space-y-4">
-              <Link href="/" className="group">
-                <h3 className="text-xl font-semibold tracking-tight group-hover:text-primary transition-colors">
-                  Ian/developer
+            <div className="md:col-span-8 space-y-8">
+              <Link href="/" className="group inline-block">
+                <h3 className="text-xs font-bold uppercase tracking-[0.3em] group-hover:text-primary transition-colors">
+                  Ian. <span className="text-muted-foreground/40 font-normal italic lowercase tracking-normal">systems & architecture</span>
                 </h3>
               </Link>
-              <p className="text-muted-foreground max-w-md leading-relaxed">
+              <p className="text-lg text-muted-foreground/60 max-w-md leading-relaxed font-medium">
                 <Balancer>
-                  Building cool stuff with passion and precision
+                  Engineering high-performance digital solutions with an unwavering focus on architectural integrity.
                 </Balancer>
               </p>
             </div>
 
             {/* Right Section */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-              <Link
-                href="https://github.com/Ianmello10"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-              >
-                <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-medium">GitHub</span>
-              </Link>
+            <div className="md:col-span-4 space-y-8">
+               <div className="space-y-4">
+                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">Connect</h4>
+                  <div className="flex flex-col gap-3">
+                    <Link
+                      href="https://github.com/Ianmello10"
+                      className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors inline-flex items-center gap-2"
+                    >
+                      <Github className="h-3 w-3" />
+                      GitHub
+                    </Link>
+                  </div>
+               </div>
             </div>
           </div>
 
           {/* Bottom Section */}
-          <div className="mt-12 pt-8 border-t border-border/50">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-              <p className="text-sm text-muted-foreground">
-                © 2024 - present{" "}
-                <Link
-                  href="https://github.com/Ianmello10"
-                  className="font-medium hover:text-foreground transition-colors"
-                >
-                  Ian/developer
-                </Link>
-                . All rights reserved.
+          <div className="mt-24 pt-8 border-t border-border/5">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/30">
+                © 2024 — {new Date().getFullYear()} Ian. All rights reserved.
               </p>
 
-              <p className="text-xs text-muted-foreground/80">
-                Made with ❤️ and Next.js
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/20">
+                Built for performance
               </p>
             </div>
           </div>
