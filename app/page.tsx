@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   SiTypescript,
   SiReact,
@@ -54,12 +53,15 @@ export default function Home() {
 
       <div className="border-t border-border mb-12" />
 
-      {/* ── Navigation ── */}
-      <nav className="flex flex-wrap gap-8 text-xs text-muted-foreground">
-        <Link href="/about"   className="hover:text-foreground transition-colors">About →</Link>
-        <Link href="/blog"    className="hover:text-foreground transition-colors">Writing →</Link>
-        <Link href="/contact" className="hover:text-foreground transition-colors">Contact →</Link>
-      </nav>
+      {/* ── Quote ── */}
+      <blockquote className="border-l-2 border-border pl-4">
+        <p className="font-serif italic text-base leading-relaxed">
+          &ldquo;I had no children, I transmitted to no creature the legacy of our misery.&rdquo;
+        </p>
+        <footer className="mt-3 text-xs text-muted-foreground">
+          — <cite>The Posthumous Memoirs of Brás Cubas</cite>
+        </footer>
+      </blockquote>
     </main>
   );
 }

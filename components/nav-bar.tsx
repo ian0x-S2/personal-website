@@ -37,8 +37,9 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full px-6 pt-8">
-      <nav className="max-w-2xl mx-auto flex items-center justify-between gap-4 pb-4 border-b border-border">
+    <header className="w-full pt-8">
+      <div className="max-w-2xl mx-auto px-6">
+      <nav className="flex items-center justify-between gap-4 pb-4 border-b border-border">
         <Link
           href="/"
           className="font-serif text-base hover:text-accent transition-colors flex-shrink-0"
@@ -70,6 +71,7 @@ export default function NavBar() {
           <ThemeToggle />
         </div>
       </nav>
+      </div>
     </header>
   );
 }
